@@ -1,9 +1,9 @@
 package objects;
 
-import dev.failsafe.internal.util.Assert;
 import org.asynchttpclient.util.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 public class FaceBookPage {
 
@@ -16,7 +16,7 @@ By Username = By.id("email");
     By password = By.id("pass");
     By login_btn = By.name("login");
 
-    public void EnterUseName(){
+    public void EnterUserName(){
     driver.findElement(Username).sendKeys("Testuser");
     }
     public void EnterPassword(){
@@ -25,6 +25,7 @@ By Username = By.id("email");
     public void verifyLogin(){
         driver.findElement(login_btn).click();
         String title = driver.getTitle();
+       Assert.assertEquals(title,"login page");
 
     }
 }

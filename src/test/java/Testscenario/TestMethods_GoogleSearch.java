@@ -1,6 +1,7 @@
 package Testscenario;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import objects.FaceBookPage;
 import objects.GoogleSearchPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,6 +15,7 @@ public class TestMethods_GoogleSearch {
     WebDriver driver;
     GoogleSearchPage objectrepo;
 
+
     @BeforeTest
     public void beforetest() {
         WebDriverManager.chromedriver().setup();
@@ -21,6 +23,10 @@ public class TestMethods_GoogleSearch {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://www.google.com/");
         driver.manage().window().maximize();
+        GoogleSearchPage page = new GoogleSearchPage(driver);
+        page.searchgoogle("facebook");
+        objectrepo = new GoogleSearchPage(driver);
+        objectrepo.ClickFacebook();
 
 
     }
@@ -32,12 +38,21 @@ public class TestMethods_GoogleSearch {
         objectrepo = new GoogleSearchPage(driver);
         objectrepo.ClickFacebook();
 
+
+
     }
+
+
+
+
+
     @Test
-    public void verifyandAccessFacebook(){
-        objectrepo = new GoogleSearchPage(driver);
+    public void verifyLogin(){
 
-
+        FaceBookPage page = new FaceBookPage(driver);
+        page.EnterUserName();
+        page.EnterPassword();
+        page.verifyLogin();
     }
 
    // @AfterTest
