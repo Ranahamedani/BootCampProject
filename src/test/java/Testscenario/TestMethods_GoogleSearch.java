@@ -50,7 +50,7 @@ public class TestMethods_GoogleSearch {
     public void verifyLogin(){
 
         FaceBookPage page = new FaceBookPage(driver);
-        page.EnterUserName();
+        page.EnterUseName();
         page.EnterPassword();
         page.verifyLogin();
     }
